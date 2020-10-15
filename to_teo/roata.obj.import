@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/roata.obj-d14637c42846d60907cc938f4fece803.mesh"
+
+[deps]
+
+files=[ "res://.import/roata.obj-d14637c42846d60907cc938f4fece803.mesh" ]
+
+source_file="res://to_teo/roata.obj"
+dest_files=[ "res://.import/roata.obj-d14637c42846d60907cc938f4fece803.mesh", "res://.import/roata.obj-d14637c42846d60907cc938f4fece803.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

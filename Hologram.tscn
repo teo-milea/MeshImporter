@@ -1,0 +1,214 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Hologram.gd" type="Script" id=1]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+render_mode unshaded;
+
+uniform sampler2D top;
+
+void fragment() {
+	if ((UV.x - UV.y < 0.0) && (UV.x + UV.y > 1.0)) {
+		// bottom
+		COLOR = vec4(1.0, 0.0, 0.0, 1.0);
+	} else if ((UV.x - UV.y < 0.0) && (UV.x + UV.y < 1.0)) {
+		// right
+		COLOR = vec4(0.0, 1.0, 0.0, 1.0);
+	} else if ((UV.x - UV.y > 0.0) && (UV.x + UV.y < 1.0)) {
+		// top
+		COLOR = vec4(0.0, 0.0, 1.0, 1.0);
+	} else {
+		// left
+		COLOR = vec4(1.0, 0.0, 1.0, 1.0);
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+
+[sub_resource type="Shader" id=3]
+code = "/*shader_type canvas_item;
+render_mode unshaded;
+
+uniform sampler2D top;
+uniform sampler2D right;
+uniform sampler2D bottom;
+uniform sampler2D left;
+
+
+
+void fragment() {
+	float ratio = 2160.0/4096.0;
+	float offset = 0.5 - ratio/2.0;
+
+	float vig_bottom = vignitte(vec2(0.5,0.75), UV, 5.0);
+	
+	float vig_top = vignitte(vec2(0.5,0.25), UV, 5.0);
+	
+	float vig_right = vignitte(vec2(0.25/ratio/ 1.5, 0.5*ratio), vec2(UV.x / ratio / 1.5, UV.y * ratio ), 4.0);
+	
+	float vig_left = vignitte(vec2(0.75/ratio/1.5, 0.5*ratio), vec2(UV.x / ratio /1.5 , UV.y * ratio), 4.0);
+	
+	
+	if ((UV.x - UV.y * ratio < 0.0 + offset) && (UV.x + UV.y * ratio > 1.0 - offset)) {
+		COLOR = texture(bottom, UV - vec2(0.0, 0.25));
+		COLOR *= vig_bottom;
+		// COLOR = vec4(0.0, 1.0, 1.0, 1.0);
+	} else if ((UV.x - UV.y * ratio < 0.0 + offset) && (UV.x + UV.y * ratio < 1.0 - offset)) {
+		// right
+		// COLOR = vec4(1.0, 0.0, 1.0, 1.0);
+		COLOR = texture(right, UV + vec2(0.25, 0.0));
+		COLOR *= vig_right;
+	} else if ((UV.x - UV.y * ratio > 0.0 + offset) && (UV.x + UV.y * ratio < 1.0 - offset)) {
+		// top
+		// COLOR = vec4(1.0, 1.0, 0.0, 1.0);
+		COLOR = texture(top, UV + vec2(0.0, 0.25));
+		COLOR *= vig_top;
+	} else {
+		// left
+		// COLOR = vec4(1.0, 0.0, 0.0, 1.0);
+		COLOR = texture(left, UV - vec2(0.25, 0.0));
+		COLOR *= vig_left;
+	}	
+	if(UV.x - UV.y * ratio - offset < 0.01  && UV.x - UV.y * ratio - offset > -0.01 ) {
+		COLOR = vec4(1.0, 1.0, 1.0, 0.0);
+	}
+	
+	if(UV.x + UV.y * ratio + offset  < 1.01   && UV.x + UV.y * ratio + offset  > 0.99) {
+		COLOR = vec4(1.0, 1.0, 1.0, 0.0);
+	}
+	
+	//COLOR *= max(vig_left, vig_right);
+	//COLOR *= max(vig_bottom, vig_top);
+}*/
+
+shader_type canvas_item;
+render_mode unshaded;
+
+uniform sampler2D top;
+uniform sampler2D right;
+uniform sampler2D bottom;
+uniform sampler2D left;
+
+float segment(vec2 P, vec2 A, vec2 B, float r) 
+{
+    vec2 g = B - A;
+    vec2 h = P - A;
+    float d = length(h - g * clamp(dot(g, h) / dot(g,g), 0.0, 1.0));
+	return smoothstep(r, 0., d);
+}
+
+float vignitte(vec2 circleCenter, vec2 uv, float multipler) {
+	float distanceFromCenter = length( uv  - circleCenter ) ;
+	float vignetteAmount;
+
+	vignetteAmount = 1.0 - distanceFromCenter * multipler / 3.0;
+    vignetteAmount = smoothstep(0.0, 1.0, vignetteAmount) ;
+	
+	return vignetteAmount * vignetteAmount * vignetteAmount;
+}
+
+void fragment() {
+	float thickness = 0.2;
+	float ratio = 2160./4096.;
+	//vec2 uv = vec2((UV.x -0.5) * ratio * 2.0, (UV.y-0.5) * 2.0);
+	vec2 uv = -((UV  - vec2(0.5)) / vec2(ratio, 1.0)) * 2.0;
+	
+	float intensity = segment(uv, vec2(-1.), vec2(1.), thickness);
+	intensity = max(segment(uv, vec2(1., -1), vec2(-1., 1.), thickness), intensity);
+    
+    intensity = max(segment(uv, vec2(1.8, -1), vec2(1.8, 1.), thickness*2.5), intensity);
+    intensity = max(segment(uv, vec2(-1.8, -1), vec2(-1.8, 1.), thickness*2.5), intensity);
+    
+    intensity = max(segment(uv, vec2(-1.8, 1.), vec2(1.8, 1.), thickness*2.5), intensity);
+    intensity = max(segment(uv, vec2(-1.8, -1.), vec2(1.8, -1.), thickness*2.5), intensity);
+	
+	vec3 color = vec3(1. - intensity);
+	
+	float offset = 0.5 - ratio/2.0;
+
+	float vig_bottom = vignitte(vec2(0.5,0.75), UV, 5.0);
+	
+	float vig_top = vignitte(vec2(0.5,0.25), UV, 5.0);
+	
+	float vig_right = vignitte(vec2(0.25/ratio/ 1.5, 0.5*ratio), vec2(UV.x / ratio / 1.5, UV.y * ratio ), 4.0);
+	
+	float vig_left = vignitte(vec2(0.75/ratio/1.5, 0.5*ratio), vec2(UV.x / ratio /1.5 , UV.y * ratio), 4.0);
+	
+	
+	if ((UV.x - UV.y * ratio < 0.0 + offset) && (UV.x + UV.y * ratio > 1.0 - offset)) {
+		COLOR = texture(bottom, UV - vec2(0.0, 0.25));
+		// COLOR = vec4(0.0, 1.0, 1.0, 1.0);
+	} else if ((UV.x - UV.y * ratio < 0.0 + offset) && (UV.x + UV.y * ratio < 1.0 - offset)) {
+		// right
+		// COLOR = vec4(1.0, 0.0, 1.0, 1.0);
+		COLOR = texture(right, UV + vec2(0.25, 0.0));
+	} else if ((UV.x - UV.y * ratio > 0.0 + offset) && (UV.x + UV.y * ratio < 1.0 - offset)) {
+		// top
+		// COLOR = vec4(1.0, 1.0, 0.0, 1.0);
+		COLOR = texture(top, UV + vec2(0.0, 0.25));
+	} else {
+		// left
+		// COLOR = vec4(1.0, 0.0, 0.0, 1.0);
+		COLOR = texture(left, UV - vec2(0.25, 0.0));
+	}	
+	if(UV.x - UV.y * ratio - offset < 0.01  && UV.x - UV.y * ratio - offset > -0.01 ) {
+		COLOR = vec4(1.0, 1.0, 1.0, 0.0);
+	}
+	
+	if(UV.x + UV.y * ratio + offset  < 1.01   && UV.x + UV.y * ratio + offset  > 0.99) {
+		COLOR = vec4(1.0, 1.0, 1.0, 0.0);
+	}
+	
+	//COLOR = vec4(uv, 0., 1.);
+	COLOR = COLOR * vec4(color, 1.);
+}"
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 3 )
+
+[sub_resource type="QuadMesh" id=5]
+
+[node name="Node2D" type="Node2D"]
+material = SubResource( 2 )
+script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -3.17163
+margin_top = -10.0
+margin_right = 2054.83
+margin_bottom = 1128.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 1024, 355 )
+rotation = -3.14159
+region_enabled = true
+region_rect = Rect2( 0, 0, 1, 1 )
+
+[node name="Sprite3" type="Sprite" parent="."]
+position = Vector2( 1238, 590 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 1, 1 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 1024, 800 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 1, 1 )
+
+[node name="Sprite4" type="Sprite" parent="."]
+position = Vector2( 800, 590 )
+rotation = 1.5708
+region_enabled = true
+region_rect = Rect2( 0, 0, 1, 1 )
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+material = SubResource( 4 )
+position = Vector2( 1024, 590 )
+rotation = 3.14159
+scale = Vector2( 2048, 1080 )
+mesh = SubResource( 5 )

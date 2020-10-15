@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/total_blue_concrete.obj-6a4aeb755c7dc552b6196f740f99b5ae.mesh"
+
+[deps]
+
+files=[ "res://.import/total_blue_concrete.obj-6a4aeb755c7dc552b6196f740f99b5ae.mesh" ]
+
+source_file="res://to_teo/total_blue_concrete.obj"
+dest_files=[ "res://.import/total_blue_concrete.obj-6a4aeb755c7dc552b6196f740f99b5ae.mesh", "res://.import/total_blue_concrete.obj-6a4aeb755c7dc552b6196f740f99b5ae.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/total_metal.obj-ccf9d9c50b1714d29ad2ae55f8fc2278.mesh"
+
+[deps]
+
+files=[ "res://.import/total_metal.obj-ccf9d9c50b1714d29ad2ae55f8fc2278.mesh" ]
+
+source_file="res://to_teo/total_metal.obj"
+dest_files=[ "res://.import/total_metal.obj-ccf9d9c50b1714d29ad2ae55f8fc2278.mesh", "res://.import/total_metal.obj-ccf9d9c50b1714d29ad2ae55f8fc2278.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

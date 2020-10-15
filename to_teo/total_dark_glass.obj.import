@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/total_dark_glass.obj-ec7f1e1ed8215ac3767df40f51ac7f8f.mesh"
+
+[deps]
+
+files=[ "res://.import/total_dark_glass.obj-ec7f1e1ed8215ac3767df40f51ac7f8f.mesh" ]
+
+source_file="res://to_teo/total_dark_glass.obj"
+dest_files=[ "res://.import/total_dark_glass.obj-ec7f1e1ed8215ac3767df40f51ac7f8f.mesh", "res://.import/total_dark_glass.obj-ec7f1e1ed8215ac3767df40f51ac7f8f.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

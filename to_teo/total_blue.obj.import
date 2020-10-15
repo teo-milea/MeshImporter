@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/total_blue.obj-2f9b88b5313e94abded0baa9e8795b7b.mesh"
+
+[deps]
+
+files=[ "res://.import/total_blue.obj-2f9b88b5313e94abded0baa9e8795b7b.mesh" ]
+
+source_file="res://to_teo/total_blue.obj"
+dest_files=[ "res://.import/total_blue.obj-2f9b88b5313e94abded0baa9e8795b7b.mesh", "res://.import/total_blue.obj-2f9b88b5313e94abded0baa9e8795b7b.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

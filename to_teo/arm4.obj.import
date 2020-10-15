@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/arm4.obj-2a6848a47085b58188fb2fcf491e5c2d.mesh"
+
+[deps]
+
+files=[ "res://.import/arm4.obj-2a6848a47085b58188fb2fcf491e5c2d.mesh" ]
+
+source_file="res://to_teo/arm4.obj"
+dest_files=[ "res://.import/arm4.obj-2a6848a47085b58188fb2fcf491e5c2d.mesh", "res://.import/arm4.obj-2a6848a47085b58188fb2fcf491e5c2d.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

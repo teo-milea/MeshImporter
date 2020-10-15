@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/total_column.obj-0b7f48c9bde81d63cad71a43c0627962.mesh"
+
+[deps]
+
+files=[ "res://.import/total_column.obj-0b7f48c9bde81d63cad71a43c0627962.mesh" ]
+
+source_file="res://to_teo/total_column.obj"
+dest_files=[ "res://.import/total_column.obj-0b7f48c9bde81d63cad71a43c0627962.mesh", "res://.import/total_column.obj-0b7f48c9bde81d63cad71a43c0627962.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

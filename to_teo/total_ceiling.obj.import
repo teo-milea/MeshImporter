@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/total_ceiling.obj-74e01b2ad034f5654c86fd7e67cecb13.mesh"
+
+[deps]
+
+files=[ "res://.import/total_ceiling.obj-74e01b2ad034f5654c86fd7e67cecb13.mesh" ]
+
+source_file="res://to_teo/total_ceiling.obj"
+dest_files=[ "res://.import/total_ceiling.obj-74e01b2ad034f5654c86fd7e67cecb13.mesh", "res://.import/total_ceiling.obj-74e01b2ad034f5654c86fd7e67cecb13.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

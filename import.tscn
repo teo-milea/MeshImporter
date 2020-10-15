@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://import.gd" type="Script" id=1]
+[ext_resource path="res://KinematicBody.gd" type="Script" id=2]
+
+[sub_resource type="CubeMesh" id=1]
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 1, 0.61, 0.22, 1 )
+ao_enabled = true
+ao_light_affect = 0.0
+ao_on_uv2 = false
+ao_texture_channel = 0
+
+[sub_resource type="ShaderMaterial" id=3]
+
+[sub_resource type="CubeMesh" id=4]
+material = SubResource( 3 )
+
+[node name="Spatial" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="Camera" type="InterpolatedCamera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 5, 5 )
+target = NodePath("../KinematicBody")
+enabled = true
+
+[node name="KinematicBody" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.90807, 4.17482, 4.6887 )
+script = ExtResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.68985, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -0.258819, 0.965926, 0, -0.965926, -0.258819, 0, 13, -5 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="."]
+mesh = SubResource( 4 )
+material/0 = null

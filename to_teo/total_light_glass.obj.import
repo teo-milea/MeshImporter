@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/total_light_glass.obj-82fc289364e43dea591d8c285c0176bb.mesh"
+
+[deps]
+
+files=[ "res://.import/total_light_glass.obj-82fc289364e43dea591d8c285c0176bb.mesh" ]
+
+source_file="res://to_teo/total_light_glass.obj"
+dest_files=[ "res://.import/total_light_glass.obj-82fc289364e43dea591d8c285c0176bb.mesh", "res://.import/total_light_glass.obj-82fc289364e43dea591d8c285c0176bb.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

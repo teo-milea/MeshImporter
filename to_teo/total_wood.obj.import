@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/total_wood.obj-5a16098aab46cf6a29aa90a25f38e35e.mesh"
+
+[deps]
+
+files=[ "res://.import/total_wood.obj-5a16098aab46cf6a29aa90a25f38e35e.mesh" ]
+
+source_file="res://to_teo/total_wood.obj"
+dest_files=[ "res://.import/total_wood.obj-5a16098aab46cf6a29aa90a25f38e35e.mesh", "res://.import/total_wood.obj-5a16098aab46cf6a29aa90a25f38e35e.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

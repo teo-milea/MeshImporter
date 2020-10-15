@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/total_shelf_white.obj-2646cab2016e72d8d831d041e246565d.mesh"
+
+[deps]
+
+files=[ "res://.import/total_shelf_white.obj-2646cab2016e72d8d831d041e246565d.mesh" ]
+
+source_file="res://to_teo/total_shelf_white.obj"
+dest_files=[ "res://.import/total_shelf_white.obj-2646cab2016e72d8d831d041e246565d.mesh", "res://.import/total_shelf_white.obj-2646cab2016e72d8d831d041e246565d.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

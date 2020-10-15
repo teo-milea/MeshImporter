@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/total_env.obj-0ebf7f7eac0d430bd24b06d910f71141.mesh"
+
+[deps]
+
+files=[ "res://.import/total_env.obj-0ebf7f7eac0d430bd24b06d910f71141.mesh" ]
+
+source_file="res://to_teo/total_env.obj"
+dest_files=[ "res://.import/total_env.obj-0ebf7f7eac0d430bd24b06d910f71141.mesh", "res://.import/total_env.obj-0ebf7f7eac0d430bd24b06d910f71141.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
